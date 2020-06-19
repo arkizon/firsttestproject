@@ -1,0 +1,185 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>recipe-edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+    <div class="row">
+        <div class="col-xs-12">
+          <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-xs-12">
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  [disabled]="!recipeForm.valid">Save</button>
+                <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    formControlName="name"
+                    class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="imagePath">Image URL</label>
+                  <input
+                    type="text"
+                    id="imagePath"
+                    formControlName="imagePath"
+                    class="form-control"
+                    #imagePath>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <img [src]="imagePath.value" class="img-responsive">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea
+                    type="text"
+                    id="description"
+                    class="form-control"
+                    formControlName="description"
+                    rows="6"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12" formArrayName="ingredients">
+                <div
+                  class="row"
+                  *ngFor="let ingredientCtrl of controls; let i = index"
+                  [formGroupName]="i"
+                  style="margin-top: 10px;">
+                  <div class="col-xs-8">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="name">
+                  </div>
+                  <div class="col-xs-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="amount">
+                  </div>
+                  <div class="col-xs-2">
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="onDeleteIngredient(i)">X</button>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      (click)="onAddIngredient()">Add Ingredient</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+
+
+
+
+
+<!-- 
+  <div>
+    <input type="text">
+  </div>
+
+      <form  [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button type='submit' [disabled]="!recipeForm?.valid" color='tint'>save</ion-button>
+            <ion-button type='button' color='tint' (click)="onCancel()">cancel</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position='floating'>Name</ion-label>
+              <ion-input type='text' formControlName="name" ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+            <ion-label>Image</ion-label>
+            <ion-input #imagePath  formControlName="imagePath"  type='text' >
+
+            </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-img class='user-image'    [src]="imagePath.value"></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+                <ion-label position='floating'>Description</ion-label>
+               <ion-textarea type='text'>
+
+               </ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col formArrayName="ingredients">
+              <ion-row *ngFor="let ingredientCtrl of ingredientsControl; let i = index" [formGroupName]="i" style="margin-top: 10px;"> 
+                <ion-col >
+                   <ion-input  type='text'   formControlName="name"></ion-input>
+                </ion-col>
+                <ion-col>
+                  <ion-input type='number' formControlName="amount"></ion-input>
+                </ion-col>
+                <ion-col>
+                  <ion-button type='button' color='danger'    (click)="onDeleteIngredient(i)"> X</ion-button>
+                </ion-col>
+              </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button color='tint'  (click)="onAddIngredient()"  type='button'>
+              Add new Ingredient
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        </ion-grid>
+      </form> -->
+    
+
+</ion-content>

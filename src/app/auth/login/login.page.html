@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form [formGroup]="loginForm">
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type='email' id='email' formControlName="email"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched" >
+    <ion-col      class='error-message'>
+        <ion-item  class=' error error-message' >
+            <h5>loginerror</h5>
+        </ion-item>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">password</ion-label>
+          <ion-input type='password' id='password' formControlName="password"></ion-input>
+        </ion-item>
+      </ion-col>
+  </ion-row>
+  <ion-row *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched"  >
+      <ion-col      class='error-message'>
+          <ion-item  class=' error error-message' >
+              <h5>loginerror</h5>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+ 
+</ion-grid>
+  
+  <ion-grid class='ion-padding-top ion-padding-bottom ion-text-center'> 
+    <ion-row>
+      <ion-col>
+       <ion-button (click)="login(loginForm)" color='tint'   [disabled]="!loginForm.valid">Login</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><ion-button color='tint' (click)="goToSignupPage()">New Here? Signup</ion-button></ion-col>
+      <ion-col><ion-button  color='tint'  (click)="goToForgotPasswordPage()"> Forgot Password?</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+
+</ion-content>

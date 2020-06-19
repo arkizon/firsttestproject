@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot='start'>
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>shopping-list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <app-shopping-edit></app-shopping-edit>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+
+      <ion-col>
+        <div   style="cursor:pointer; color:'red'; border:'1px solid'" *ngFor='let ingredient of ingredients; let i = index' (click)="onEditItem(i)">
+          <p> {{ingredient.name}} <span>({{ingredient.amount}})</span></p>
+        </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

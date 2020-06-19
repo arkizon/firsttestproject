@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot='start'>
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>recipes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-grid>
+  <ion-row >
+    <ion-col>
+      <ion-button color='secondary' (click)="onCreateNewRecipe()">create New Recipe</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row  style="margin-bottom: 20px;"    class='ion-margin-bottom'>
+    
+    <ion-col class='col-md-5' >
+           <div  class='recipe-border' *ngFor='let recipe of recipes; let i = index'  [routerLink]="['/recipes', i]"  button>
+              <ion-label>{{recipe.name}}</ion-label>
+            <ion-text>
+              <h3>{{recipe.description}}</h3>
+              <span><img [src]="recipe.imagePath" style='max-height: 50px;'></span>
+            </ion-text>
+           </div>
+           
+    </ion-col>
+    <ion-col class='col-md-5'> 
+      <ion-router-outlet></ion-router-outlet>
+    </ion-col>
+  
+  </ion-row>
+ 
+</ion-grid>
+
+</ion-content>

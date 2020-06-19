@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot='start'>
+      <ion-back-button defaultHref="/auth/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form  [formGroup]="signupForm">
+   <ion-grid>
+     <ion-row>
+       <ion-col>
+         <ion-item>
+           <ion-label position='floating'>
+            First Name
+           </ion-label>
+           <ion-input formControlName="firstName"></ion-input>
+         </ion-item>
+       </ion-col>
+      
+     </ion-row>
+     <ion-row class='error error-message' *ngIf="!signupForm.controls['firstName'].valid && signupForm.controls['firstName'].touched">
+       <ion-col>
+         <div>first name RROR</div>
+       </ion-col>
+     </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+        <ion-label position='floating'>Last name</ion-label>
+        <ion-input formControlName="lastName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class='error error-message' *ngIf="!signupForm.controls['lastName'].valid && signupForm.controls['lastName'].touched">
+      <ion-col>
+        <div>lastName Error</div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input    type='email' formControlName="email"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class='error error-message' *ngIf="!signupForm.controls['email'].valid && signupForm.controls['email'].touched">
+        <ion-col>
+          <div>Email Error</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input  type='password'  formControlName="password1"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class='error error-message' *ngIf="!signupForm.controls['password1'].valid && signupForm.controls['password1'].touched">
+        <ion-col>
+          <div> Password must be more than 6 characters</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating"> Confirm Password</ion-label>
+              <ion-input type="password"  formControlName="password2"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class='error error-message' *ngIf="!signupForm.controls['password2'].valid && signupForm.controls['password2'].touched">
+          <ion-col >
+            <div >Both passwords must be the same</div>
+          </ion-col>
+        </ion-row>
+   </ion-grid>
+    <ion-grid class='ion-padding-top ion-padding-bottom ion-text-center'> 
+      <ion-row>
+        <ion-col>
+         <ion-button (click)="signup(signupForm)"  color='tint'   [disabled]="!signupForm.valid">Signup</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button color='tint'   (click)="goToLoginPage()"> go to  Login</ion-button></ion-col>
+        <ion-col> <ion-button    color='tint' (click)="goToForgotPasswordPage()"> Forgot Password?</ion-button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  
+</ion-content>

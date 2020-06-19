@@ -1,0 +1,128 @@
+
+<ion-header>
+    <ion-toolbar>
+      <ion-title>profile</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+   
+  <form [formGroup]="profileForm">
+  
+      <ion-grid>
+          <ion-row class='form-group'>
+              <ion-col>
+                <ion-item>
+                  <ion-label position='floating'> First Name</ion-label>
+                  <ion-input  type='email' formControlName="firstName" class='form-control'>
+    
+                  </ion-input>
+                </ion-item>
+                <ion-item  *ngIf="!profileForm.get('firstName').valid && profileForm.get('firstName').touched">
+                    <ion-text color='danger'>first name is required</ion-text>
+                </ion-item>
+              </ion-col>
+             </ion-row>
+  
+       
+             <ion-row class='form-group'>
+                <ion-col>
+                  <ion-item>
+                    <ion-label position='floating'>Last name</ion-label>
+                    <ion-input  type='email'  formControlName="lastName" class='form-control'>
+      
+                    </ion-input>
+                  </ion-item>
+                  <ion-item  *ngIf="!profileForm.get('lastName').valid && profileForm.get('lastName').touched">
+                      <ion-text color='danger'>last name is required</ion-text>
+                  </ion-item>
+                </ion-col>
+               </ion-row>
+        <div formGroupName="changeEmail" class='container border'>
+            <div class='ion-text-center'>
+             <h5> change your email</h5>
+            </div>
+           <ion-row class='form-group'>
+            <ion-col>
+              <ion-item>
+                <ion-label position='floating'> Email</ion-label>
+                <ion-input  type='email'  formControlName="email" class='form-control'>
+  
+                </ion-input>
+              </ion-item>
+              <ion-item  *ngIf="!profileForm.get('changeEmail.email').valid && profileForm.get('changeEmail.password').touched">
+                  <ion-text color='danger'>Invalid email</ion-text>
+              </ion-item>
+            </ion-col>
+           </ion-row>
+           <ion-row class='form-group'>
+             <ion-col>
+          <ion-item>
+            <ion-label  position='floating'>Password</ion-label>
+            <ion-input  type='password'  formControlName="password" class='form-control'></ion-input>
+          </ion-item>
+          <ion-item  *ngIf="!profileForm.get('changeEmail.password').valid && profileForm.get('changeEmail.password').touched">
+              <ion-text color='danger'> Incorrect password</ion-text>
+          </ion-item>
+          </ion-col>
+           </ion-row>
+        </div>
+  
+        <div formGroupName="changePassword" class='container border'>
+            <div class='ion-text-center'>
+         <h5>change password</h5>
+            </div>
+            <ion-row class='form-group'>
+                <ion-col>
+                 <ion-item>
+                   <ion-label position='floating'>Old password</ion-label>
+                   <ion-input
+                   type="password"
+              
+                   formControlName="oldPassword"
+                   class='form-control'
+                   ></ion-input>
+                 </ion-item>
+                 <ion-item *ngIf="!profileForm.get('changePassword.oldPassword').valid && profileForm.get('changePassword.oldPassword').touched">
+                    <ion-text color='danger'>password must be more than 8 characters</ion-text>
+                   </ion-item>
+                 
+                </ion-col>
+               </ion-row>
+              
+  
+               <ion-row class='form-group'>
+                  <ion-col>
+                   <ion-item>
+                     <ion-label position='floating'>New password</ion-label>
+                     <ion-input
+                     type="password"
+                    
+                     formControlName="newPassword"
+                     class='form-control'
+                     ></ion-input>
+                   </ion-item>
+                    <ion-item *ngIf="!profileForm.get('changePassword.newPassword').valid && profileForm.get('changePassword.newPassword').touched">
+                     <ion-text color='danger'>Password must be more than 6 characters</ion-text>
+                    </ion-item>
+                   
+                  </ion-col>
+                 </ion-row >
+                
+        </div>
+      </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <ion-button  color='light' (click)='onCancel()'> Cancel</ion-button>
+        </ion-col>
+        <ion-col >
+          <ion-button  color='light' (click)="profileEdited()">
+          Save Profile </ion-button> </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  
+  
+  </ion-content>
+  
